@@ -50,4 +50,18 @@ public class StudentDAO_Impl implements StudentDAO {
         }
             return courseList;
     }
+
+    public void updateStudent(Student student) {
+        String query = "UPDATE Students SET name = ?, major = ? WHERE student_id = ?";
+        try (PreparedStatement pstmt = connection.prepareStatement(query)) {
+            pstmt.setString(1, student.getName());
+            pstmt.setString(2, student.getMajor());
+            pstmt.setInt(3, student.getStudentID());
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Error updating student data");
+        }
+    }
+
 }

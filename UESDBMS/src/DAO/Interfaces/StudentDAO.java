@@ -10,5 +10,6 @@ public interface StudentDAO {
 
     void addStudent(Student student) throws SQLException;
     List<Course> viewCoursesForStudent(int studentID) throws SQLException;
+    void updateStudent(Student student);
 
 }

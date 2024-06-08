@@ -5,8 +5,6 @@ import Service.*;
 import Utility.DatabaseConnection;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
@@ -41,7 +39,9 @@ public class UES_main {
                 System.out.println("9. View All Departments");
                 System.out.println("10. Calculate Average Grade for a Course");
                 System.out.println("11. Calculate Total Credits for a Student");
-                System.out.println("12. Exit");
+                System.out.println("12. Delete Instructor");
+                System.out.println("13. Update Student");
+                System.out.println("14. Exit");
                 System.out.print("Enter your choice: ");
                 int choice = scanner.nextInt();
                 scanner.nextLine();
@@ -133,6 +133,24 @@ public class UES_main {
                             System.out.println("Total Credits for Student ID " + studentIdForCredits + ": " + totalCredits);
                             break;
                         case 12:
+                            System.out.print("Enter instructor ID: ");
+                            int instructorID = scanner.nextInt();
+                            instructorService.deleteInstructor(instructorID);
+                            System.out.println("Instructor deleted successfully");
+                            break;
+                        case 13:
+                            System.out.print("Enter student ID: ");
+                            int studentID = scanner.nextInt();
+                            scanner.nextLine();
+                            System.out.print("Enter new student name: ");
+                            String newName = scanner.nextLine();
+                            System.out.print("Enter new student major: ");
+                            String newMajor = scanner.nextLine();
+                            Student studentToUpdate = new Student(studentID, newName, newMajor);
+                            studentService.updateStudent(studentToUpdate);
+                            System.out.println("Student updated successfully");
+                            break;
+                        case 14:
                             System.out.println("Exiting...");
                             return;
                         default:

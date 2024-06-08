@@ -47,4 +47,17 @@ public class InstructorDAO_Impl implements InstructorDAO {
         return instructors;
     }
 
+    public void deleteInstructor(int instructorID){
+        String query = "DELETE FROM Instructors WHERE instructor_id = ?";
+        try (PreparedStatement pstmt = connection.prepareStatement(query)) {
+            pstmt.setInt(1, instructorID);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Error deleting instructor");
+        }
+    }
+
+
+
 }

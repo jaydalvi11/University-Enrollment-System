@@ -22,4 +22,8 @@ public class InstructorService {
         return instructorDAO.getInstructorsByDepartment(department);
     }
 
+    public void deleteInstructor(int instructorID) {
+        instructorDAO.deleteInstructor(instructorID);
+    }
+
 }

@@ -23,4 +23,8 @@ public class StudentService {
         return studentDAO.viewCoursesForStudent(studentID);
     }
 
+    public void updateStudent(Student student) {
+        studentDAO.updateStudent(student);
+    }
+
 }

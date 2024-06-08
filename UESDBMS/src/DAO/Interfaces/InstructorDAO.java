@@ -9,5 +9,6 @@ public interface InstructorDAO {
 
     void addInstructor(Instructor instructor) throws SQLException;
     List<Instructor> getInstructorsByDepartment(String department) throws SQLException;
+    void deleteInstructor(int instructorId);
 
 }
